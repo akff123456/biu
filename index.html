@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жеке бюджетке есеп жүргізу</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- === Секция авторизации / регистрации === -->
+    <div id="auth-section" class="container">
+        <h1>Жеке бюджетке есеп жүргізу</h1>
+
+        <div class="tabs">
+            <button id="tab-login" class="tab-btn active">Кіру</button>
+            <button id="tab-register" class="tab-btn">Тіркелу</button>
+        </div>
+
+        <!-- Форма входа -->
+        <form id="login-form" class="auth-form">
+            <div class="form-group">
+                <label for="login-username">Пайдаланушы аты:</label>
+                <input type="text" id="login-username" required placeholder="Логин">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Құпия сөз:</label>
+                <input type="password" id="login-password" required placeholder="Құпиясөз">
+            </div>
+            <button type="submit" class="btn-add">Кіру</button>
+        </form>
+
+        <!-- Форма регистрации -->
+        <form id="register-form" class="auth-form" style="display: none;">
+            <div class="form-group">
+                <label for="reg-username">Пайдаланушы аты:</label>
+                <input type="text" id="reg-username" required placeholder="Логин (кілт)">
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Құпия сөз:</label>
+                <input type="password" id="reg-password" required placeholder="Құпиясөз (2+ таңба)">
+            </div>
+            <div class="form-group">
+                <label for="reg-password2">Құпия сөзді қайталау:</label>
+                <input type="password" id="reg-password2" required placeholder="Қайта енгізіңіз">
+            </div>
+            <button type="submit" class="btn-add">Тіркелу</button>
+        </form>
+
+        <p id="auth-message" class="auth-msg"></p>
+    </div>
+
+    <!-- === Основное приложение (после входа) === -->
+    <div id="app-section" class="container" style="display: none;">
+        <div class="top-bar">
+            <h1>Жеке бюджетке есеп жүргізу</h1>
+            <button id="btn-logout" class="btn-logout">Шығу</button>
+        </div>
+
+        <h2>Транзакция қосу</h2>
+        <form id="transaction-form">
+            <div class="form-group">
+                <label for="amount">Сома (теңге):</label>
+                <input type="number" id="amount" required placeholder="Мысалы: 1500">
+            </div>
+            <div class="form-group">
+                <label for="type">Түрі:</label>
+                <select id="type">
+                    <option value="income">Табыс</option>
+                    <option value="expense">Шығын</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="category">Категория (мысалы: азық-түлік):</label>
+                <input type="text" id="category" required placeholder="Мысалы: коммуналдық қызметтер">
+            </div>
+            <button type="submit" class="btn-add">Қосу</button>
+        </form>
+
+        <h2>Транзакциялар тарихы</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Күні</th>
+                        <th>Сома</th>
+                        <th>Түрі</th>
+                        <th>Категория</th>
+                        <th>Әрекет</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-list">
+                    <!-- Мұнда транзакциялар көрсетіледі -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary">
+            <p>Жалпы табыс: <span id="total-income">0</span> ₸</p>
+            <p>Жалпы шығын: <span id="total-expense">0</span> ₸</p>
+            <p>Баланс: <span id="balance">0</span> ₸</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
